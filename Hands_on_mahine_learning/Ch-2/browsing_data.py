@@ -39,4 +39,4 @@ if __name__ == "__main__":
 	load_data.fetch_housing_data()
 	data = load_data.load_housing_data()
 
-	print(data)
+	print(data)  
