@@ -30,6 +30,13 @@ class Data():
 
 		self.Y = self.weight*self.X + self.bias
 
+		#make the test and train data set
+
+		train_split = int(0.8*len(self.X))
+
+		self.X_train , self.y_train = self.X[:train_split],self.Y[:train_split]
+		self.X_test , self.y_test = self.X[train_split:],self.Y[train_split:]
+
 
 
 class Linear_regression_model(nn.Module):
@@ -56,5 +63,14 @@ if __name__=="__main__":
 
 	LR_model = Linear_regression_model()
 
-	print(list(LR_model.parameters()))
+	param =list(LR_model.parameters())
 
+
+	#make the predictions 
+
+	y_preds = LR_model(data.X_test)
+
+
+	print(data.y_test)
+	print("the predictions")
+	print(y_preds)
