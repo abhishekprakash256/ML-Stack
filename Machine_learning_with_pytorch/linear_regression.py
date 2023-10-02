@@ -65,6 +65,8 @@ if __name__=="__main__":
 
 	param =list(LR_model.parameters())
 
+	print(LR_model.state_dict())
+
 
 	#make the predictions 
 
