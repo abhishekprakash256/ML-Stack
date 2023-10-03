@@ -71,3 +71,36 @@ if __name__=="__main__":
 	loss_fn = nn.L1Loss()
 
 	optimizer = th.optim.SGD(params = LR_model.parameters(), lr = 0.01) 
+
+
+	#make the training loop 
+
+	epochs = 10 
+
+	for epoch in range(epochs):
+
+		print(epoch)
+		
+		LR_model.train()
+
+		#forward pass 
+		y_pred = LR_model(data.X_train)
+
+		#calculate loss 
+
+		loss = loss_fn(y_pred, data.y_train)
+
+		#optimize 
+		optimizer.zero_grad()
+
+		#perform backprop 
+		loss.backward()
+
+		#perfrom gradient descent 
+		optimizer.step()
+
+		#model evaluation
+
+		LR_model.eval()
+
+		print(LR_model.state_dict())
