@@ -68,11 +68,6 @@ if __name__=="__main__":
 	print(LR_model.state_dict())
 
 
-	#make the predictions 
+	loss_fn = nn.L1Loss()
 
-	y_preds = LR_model(data.X_test)
-
-
-	print(data.y_test)
-	print("the predictions")
-	print(y_preds)
+	optimizer = th.optim.SGD(params = LR_model.parameters(), lr = 0.01) 
