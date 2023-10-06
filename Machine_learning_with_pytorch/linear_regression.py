@@ -75,7 +75,7 @@ if __name__=="__main__":
 
 	#make the training loop 
 
-	epochs = 10 
+	epochs = 100
 
 	for epoch in range(epochs):
 
@@ -103,4 +103,7 @@ if __name__=="__main__":
 
 		LR_model.eval()
 
-		print(LR_model.state_dict())
+
+		#make the test data evaluation 
+
+		
