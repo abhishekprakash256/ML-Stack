@@ -6,7 +6,7 @@ The linear regresssion model in pytorch
 
 import torch as th 
 from torch import nn 
-
+from pathlib import Path
 
 
 class Data():
@@ -106,4 +106,31 @@ if __name__=="__main__":
 
 		#make the test data evaluation 
 
-		
+		with th.inference_mode():
+
+			test_pred = LR_model(data.X_test)
+
+			test_loss = loss_fn(test_pred,data.y_test)
+
+		if epoch % 10 == 0 :
+
+			print(epoch, loss, test_loss)
+
+			print(LR_model.state_dict())
+
+
+	#save the model 
+
+	model_path = Path("models")
+	model_path.mkdir(parents = True, exist_ok = True)
+
+
+	#create the save model 
+	model_name = "linear_regression_01.pth"
+	model_save_path = model_path / model_name
+
+	#save the model
+
+	print(f"save the model: {model_save_path}")
+
+	th.save(obj = LR_model.state_dict(), f = model_save_path)
