@@ -11,7 +11,9 @@ from torch import nn
 #make the parameters 
 WEIGHT = 0.7
 BIAS = 0.3 
-EPOCHS = 150 
+EPOCHS = 500 
+th.manual_seed(5)
+
 
 class Data_handling():
     """
@@ -100,55 +102,62 @@ class Linear_Model(nn.Module):
         return self.linear_layer(x)
 
 
+class Test_and_train:
 
-def train_and_test():
-    """
-    Train and test a linear regression model using synthetic data.
+	def train_and_test_model(self):
+		"""
+		Train and test a linear regression model using synthetic data.
 
-    This function creates an instance of the `Data_handling` class to generate synthetic data and split it into
-    training and testing sets. It also creates an instance of the `Linear_Model` class for linear regression.
-    The training process includes defining a loss function (L1Loss), an optimizer (SGD), and performing training epochs.
-    During training, it prints the loss and test loss every 10 epochs.
+		This function creates an instance of the `Data_handling` class to generate synthetic data and split it into
+		training and testing sets. It also creates an instance of the `Linear_Model` class for linear regression.
+		The training process includes defining a loss function (L1Loss), an optimizer (SGD), and performing training epochs.
+		During training, it prints the loss and test loss every 10 epochs.
 
-    Returns:
-    None
-    """
-    
-    # Create a data instance
-    data = Data_handling()
+		Returns:
+		None
+		"""
+		
+		# Create a data instance
+		data = Data_handling()
 
-    # Generate and split the data
-    data.make_data()
-    data.train_test_split()
+		# Generate and split the data
+		data.make_data()
+		data.train_test_split()
 
-    # Create a linear regression model instance
-    LR_model = Linear_Model()
+		# Create a linear regression model instance
+		LR_model = Linear_Model()
 
-    # Define the loss function
-    loss_fn = nn.L1Loss()
+		# Define the loss function
+		loss_fn = nn.L1Loss()
 
-    # Define the optimizer
-    optimizer = th.optim.SGD(params=LR_model.parameters(), lr=0.01)
+		# Define the optimizer
+		optimizer = th.optim.SGD(params=LR_model.parameters(), lr=0.01)
 
-    for epoch in range(EPOCHS):
-        LR_model.train()
-        y_pred = LR_model(data.X_train)
-        loss = loss_fn(y_pred, data.y_train)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+		for epoch in range(EPOCHS):
+			LR_model.train()
+			y_pred = LR_model(data.X_train)
+			loss = loss_fn(y_pred, data.y_train)
+			optimizer.zero_grad()
+			loss.backward()
+			optimizer.step()
 
-        LR_model.eval()
-        with th.inference_mode():
-            test_pred = LR_model(data.X_test)
-            test_loss = loss_fn(test_pred, data.y_test)
+			LR_model.eval()
+			with th.inference_mode():
+				test_pred = LR_model(data.X_test)
+				test_loss = loss_fn(test_pred, data.y_test)
 
-        if epoch % 10 == 0:
-            print(f"Epoch {epoch}: Training Loss: {loss}, Test Loss: {test_loss}")
-            print(LR_model.state_dict())
+			if epoch % 10 == 0:
+				print(f"Epoch {epoch}: Training Loss: {loss}, Test Loss: {test_loss}")
+				print(LR_model.state_dict())
+
+	
+
 
 
 
 
 if __name__ == "__main__":
-    train_and_test()
+	trainer = Test_and_train()
+
+	trainer.train_and_test_model()
+	
