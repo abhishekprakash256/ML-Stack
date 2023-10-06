@@ -156,10 +156,14 @@ class Test_and_train:
 
 
 if __name__ == "__main__":
+	
 	trainer = Test_and_train()
-
 	param = trainer.train_and_test_model()
+	model = Linear_Model()
+	model.load_state_dict(param)
 
-	trained_model = Linear_Model()
+	
 
-	trained_model.state_dict() = param
+
+
+
