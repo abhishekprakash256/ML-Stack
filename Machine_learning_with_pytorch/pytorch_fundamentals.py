@@ -1,5 +1,5 @@
 """
-The fundeamentals of pytorch
+The fundeamentals of pytorch 
 
 """
 
