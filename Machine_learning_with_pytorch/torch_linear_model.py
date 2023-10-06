@@ -150,8 +150,7 @@ class Test_and_train:
 				print(f"Epoch {epoch}: Training Loss: {loss}, Test Loss: {test_loss}")
 				print(LR_model.state_dict())
 
-	
-
+		return LR_model.state_dict()
 
 
 
@@ -159,5 +158,8 @@ class Test_and_train:
 if __name__ == "__main__":
 	trainer = Test_and_train()
 
-	trainer.train_and_test_model()
-	
+	param = trainer.train_and_test_model()
+
+	trained_model = Linear_Model()
+
+	trained_model.state_dict() = param
