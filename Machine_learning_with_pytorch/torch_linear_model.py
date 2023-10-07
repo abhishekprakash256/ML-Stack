@@ -10,7 +10,7 @@ from torch import nn
 
 #make the parameters 
 WEIGHT = 0.7
-BIAS = 0.3 
+BIAS = 0.3
 EPOCHS = 500 
 th.manual_seed(5)
 
