@@ -18,46 +18,86 @@ th.manual_seed(42)
 
 
 
-
-
-
-
 class Data:
 	def make_data(self):
 		"""
 		The method to make the data set and load the values
 		"""
 
-		data = make_circles(n_samples=1000, shuffle=True, noise=None, random_state=None, factor=0.8)
-		self.X,self.y = data
+		sample_data = make_circles(n_samples=1000, shuffle=True, noise=None, random_state=None, factor=0.8)
+		self.X,self.y = sample_data
 		self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=42)
 
-		self.X_train = th.tensor(self.X_train)
-		self.X_test = th.tensor(self.X_test)
-		self.y_train = th.tensor(self.y_train)
-		self.y_test = th.tensor(self.y_test)
-
-
-class Visualization:
-	def visualize_data(self):
-		"""
-		The method to visualize the data in pyplot
-		"""
-
-		
+		self.X_train = th.tensor(self.X_train).float()
+		self.X_test = th.tensor(self.X_test).float()
+		self.y_train = th.tensor(self.y_train).float()
+		self.y_test = th.tensor(self.y_test).float()
 
 
 
+class Model(nn.Module):
+    def __init__(self):
+        super(Model, self).__init__()
+
+        # Define layers with float data type
+        self.linear1 = nn.Linear(2, 16)
+        self.linear2 = nn.Linear(16, 32)
+        self.linear3 = nn.Linear(32, 16)
+        self.linear4 = nn.Linear(16, 1)
+
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.linear2(x)
+        x = self.linear3(x)
+        x = self.linear4(x)
+ 
+        return x
 
 
 
+def train_and_test():
 
-		
+	"""
+	The funcition to train and test the model 
+	"""
+	data = Data()
+
+	#make they data
+	data.make_data()
+
+	model = Model()
+
+	# Define the loss function
+	loss_fn = nn.L1Loss()
+
+	# Define the optimizer
+	optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
+
+	for epoch in range(EPOCHS):
+		model.train()
+		y_pred = model(data.X_train)
+		loss = loss_fn(y_pred, data.y_train)
+		optimizer.zero_grad()
+		loss.backward()
+		optimizer.step()
+
+		model.eval()
+		with th.inference_mode():
+			test_pred = model(data.X_test)
+			test_loss = loss_fn(test_pred, data.y_test)
+
+		if epoch % 10 == 0:
+			print(f"Epoch {epoch}: Training Loss: {loss}, Test Loss: {test_loss}")
+
+
+	return model.state_dict()
+
 
 
 
 
 
 if __name__ == "__main__":
-	data = Data()
-	data.make_data()
+
+	train_and_test()
