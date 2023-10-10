@@ -21,4 +21,5 @@ x_file_path = "x.pt"
 y_file_path = "y.pt"
 
 # Save the tensor to the specified file
-torch.save(tensor_to_save, file_path)
+th.save(x, x_file_path)
+th.save(y,y_file_path)
