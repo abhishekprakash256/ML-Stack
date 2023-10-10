@@ -5,7 +5,7 @@ The file to load the data from the storage into memeory
 
 #imports 
 import torch as th
-
+from sklearn.model_selection import train_test_split
 
 # Specify a file path for storing the tensor
 X_FILE_PATH = "./data/x.pt"
@@ -20,5 +20,8 @@ class data:
         The method to load the data 
         """
 
-        x = th.load(x_file_path)
-        y = th.load(y_file_path)
+        x = th.load(X_FILE_PATH)
+        y = th.load(Y_FILE_PATH)
+
+        
+
