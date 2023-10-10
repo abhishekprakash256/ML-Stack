@@ -6,7 +6,7 @@ Store created array data in mongodb
 
 import torch
 from pymongo import MongoClient
-
+import numpy as np
 
 # Create a MongoClient and connect to your MongoDB server
 client = MongoClient("mongodb://localhost:27017")
@@ -31,5 +31,25 @@ document = {"tensor_data": tensor_bytes}
 collection.insert_one(document)
 
 # Close the MongoDB connection when done
+
+document = collection.find_one({})
+
+if document:
+    # Retrieve the tensor data from the document
+    tensor_bytes = document.get("tensor_data", None)
+
+    if tensor_bytes:
+        # Convert the bytes back to a NumPy array
+        numpy_array = np.frombuffer(tensor_bytes, dtype=np.float32)  # Adjust dtype if needed
+
+        # Convert the NumPy array back to a Torch tensor
+        tensor = torch.from_numpy(numpy_array)
+
+        # Now you have your Torch tensor
+        print("Retrieved Torch Tensor:", tensor)
+
+
+
 client.close()
 
+#--retrive this data from mongodb 
