@@ -4,32 +4,32 @@ Store created array data in mongodb
 
 #imports 
 
-import torch as th 
+import torch
 from pymongo import MongoClient
 
 
-import pymongo
+# Create a MongoClient and connect to your MongoDB server
+client = MongoClient("mongodb://localhost:27017")
 
-# Replace these with your MongoDB connection details
-mongo_uri = "mongodb://localhost:27017"  # Connection URI
-database_name = "Test_Data_Base"      # Database name
-collection_name = "Test_Collection"        # Name of the new collection
+# Choose a database and collection
+db = client["mydatabase"]
+collection = db["mycollection"]
 
-# Connect to MongoDB
-client = pymongo.MongoClient(mongo_uri)
+# Create a Torch tensor
+tensor = torch.tensor([1, 2, 3])
 
-# Access the database
-db = client[database_name]
+# Convert the Torch tensor to a NumPy array
+numpy_array = tensor.numpy()
 
-# Create a new collection
-db.create_collection(collection_name)
+# Convert the NumPy array to bytes for storage
+tensor_bytes = numpy_array.tobytes()
 
-cursor = collection.find()
+# Create a document to store the tensor bytes
+document = {"tensor_data": tensor_bytes}
 
-for document in cursor:
-    print(document)
+# Insert the document into the collection
+collection.insert_one(document)
 
 # Close the MongoDB connection when done
 client.close()
 
-print(f"Collection '{collection_name}' created successfully.")
