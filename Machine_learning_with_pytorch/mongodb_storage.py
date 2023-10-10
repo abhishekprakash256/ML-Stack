@@ -24,6 +24,11 @@ db = client[database_name]
 # Create a new collection
 db.create_collection(collection_name)
 
+cursor = collection.find()
+
+for document in cursor:
+    print(document)
+
 # Close the MongoDB connection when done
 client.close()
 
