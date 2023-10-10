@@ -12,17 +12,17 @@ import pymongo
 
 # Replace these with your MongoDB connection details
 mongo_uri = "mongodb://localhost:27017"  # Connection URI
-database_name = ""      # Database name
-collection_name = ""        # Name of the new collection
+database_name = "Test_Data_Base"      # Database name
+collection_name = "Test_Collection"        # Name of the new collection
 
 # Connect to MongoDB
 client = pymongo.MongoClient(mongo_uri)
 
 # Access the database
-db = client[sample_data]
+db = client[database_name]
 
 # Create a new collection
-db.create_collection(test_data)
+db.create_collection(collection_name)
 
 # Close the MongoDB connection when done
 client.close()
