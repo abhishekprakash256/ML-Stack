@@ -1,0 +1,8 @@
+#The models and paramaters for the traing 
+
+models: ["Linear_model", "DNN","Random_forest"]
+parameters:
+  learning_rate: 0.01
+  epoch: 500
+  test_split: 20 
+  batch_size: 32
