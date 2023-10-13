@@ -2,8 +2,6 @@
 The test logging for exceptions 
 """
 
-
-
 import logging
 
 a = 5
