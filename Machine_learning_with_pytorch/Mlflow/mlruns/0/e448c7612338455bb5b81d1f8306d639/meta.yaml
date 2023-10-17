@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/ML-Stack/Machine_learning_with_pytorch/Mlflow/mlruns/0/e448c7612338455bb5b81d1f8306d639/artifacts
+end_time: 1697569072544
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e448c7612338455bb5b81d1f8306d639
+run_name: bouncy-fly-522
+run_uuid: e448c7612338455bb5b81d1f8306d639
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697569069798
+status: 3
+tags: []
+user_id: ubuntu
