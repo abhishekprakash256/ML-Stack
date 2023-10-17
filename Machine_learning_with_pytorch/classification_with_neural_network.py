@@ -75,10 +75,13 @@ def train_and_test():
 
 	#------------------debug the code ---------------------------#
 
-	print(data.X_train[0:5].dtype)
+	print(data.X_train[0:5])
 	print(data.y_test[0:5])
 
-	
+	print(model.parameters)
+
+
+	"""
 	#the loop for trainer
 	for epoch in range(EPOCHS):
 		model.train()
@@ -98,7 +101,7 @@ def train_and_test():
 
 
 	return model.state_dict()
-
+	"""
 
 
 if __name__ == "__main__":
