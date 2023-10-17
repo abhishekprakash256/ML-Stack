@@ -11,11 +11,9 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 
-
 #constants
 EPOCHS = 500 
 th.manual_seed(42)
-
 
 
 class Data:
@@ -69,11 +67,18 @@ def train_and_test():
 	model = Model()
 
 	# Define the loss function
-	loss_fn = nn.BCEWithLogitsLoss()
+	loss_fn = nn.BCELoss()
 
 	# Define the optimizer
 	optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
 
+
+	#------------------debug the code ---------------------------#
+
+	print(data.X_train[0:5].dtype)
+	print(data.y_test[0:5])
+
+	
 	#the loop for trainer
 	for epoch in range(EPOCHS):
 		model.train()
@@ -88,13 +93,11 @@ def train_and_test():
 			test_pred = model(data.X_test)
 			test_loss = loss_fn(test_pred, data.y_test)
 
-		if epoch % 20 == 0:
+		if epoch % 10 == 0:
 			print(f"Epoch {epoch}: Training Loss: {loss}, Test Loss: {test_loss}")
 
 
 	return model.state_dict()
-
-
 
 
 
