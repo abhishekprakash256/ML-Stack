@@ -69,7 +69,7 @@ def train_and_test():
 	model = Model()
 
 	# Define the loss function
-	loss_fn = nn.L1Loss()
+	loss_fn = nn.BCEWithLogitsLoss()
 
 	# Define the optimizer
 	optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
