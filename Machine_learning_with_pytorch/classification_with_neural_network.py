@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 
 
 #constants
-EPOCHS = 500 
+EPOCHS = 1000
 th.manual_seed(42)
 
 
@@ -38,19 +38,21 @@ class Model(nn.Module):
 		super(Model, self).__init__()
 
 		# Define layers with float data type
-		self.linear1 = nn.Linear(2, 16)
-		#self.linear2 = nn.Linear(16, 32)
+		self.linear1 = nn.Linear(2, 10)
+		self.linear2 = nn.Linear(10, 10)
 		#self.linear3 = nn.Linear(32, 16)
-		self.linear4 = nn.Linear(16, 1)
-		self.sigmoid = nn.Sigmoid()
+		self.linear4 = nn.Linear(10, 1)
+		#self.sigmoid = nn.Sigmoid()
+		self.relu = nn.ReLU()
 
 
 	def forward(self, x):
 		x = self.linear1(x)
-		#x = self.linear2(x)
+		x = self.linear2(x)
 		#x = self.linear3(x)
 		x = self.linear4(x)
-		x = self.sigmoid(x)
+		#x = self.sigmoid(x)
+		x = self.relu(x)
 		x = th.floor(x)
  
 		return x
@@ -75,7 +77,7 @@ def train_and_test():
 	loss_fn = nn.BCEWithLogitsLoss()
 
 	# Define the optimizer
-	optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
+	optimizer = th.optim.SGD(params=model.parameters(), lr=0.1)
 
 
 	#------------------debug the code ---------------------------#
