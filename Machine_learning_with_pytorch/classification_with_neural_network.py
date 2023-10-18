@@ -103,7 +103,6 @@ def train_and_test():
 	return model.state_dict()
 	"""
 
-
 if __name__ == "__main__":
 
 	train_and_test()
