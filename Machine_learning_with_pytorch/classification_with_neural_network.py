@@ -67,7 +67,7 @@ def train_and_test():
 	model = Model()
 
 	# Define the loss function
-	loss_fn = nn.BCELoss()
+	loss_fn = nn.L1Loss()
 
 	# Define the optimizer
 	optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
@@ -81,7 +81,7 @@ def train_and_test():
 	print(model.parameters)
 
 
-	"""
+	
 	#the loop for trainer
 	for epoch in range(EPOCHS):
 		model.train()
@@ -101,7 +101,7 @@ def train_and_test():
 
 
 	return model.state_dict()
-	"""
+	
 
 if __name__ == "__main__":
 
