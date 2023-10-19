@@ -51,3 +51,17 @@ print(transformed_df.show())
 
 #makng the fitering for the dataset 
 
+print("-----------Running the salary filter--------------")
+print(df_pyspark.filter("Salary<=25").show())
+
+print("----------print the Name and age column-------------")
+print(df_pyspark.filter("Salary<=25").select("Name","age").show())
+
+
+print("print the schema of the dataset")
+print(df_pyspark.printSchema())
+
+
+#the groupby function 
+print("the group by function of the scheme")
+print(df_pyspark.groupBy("Age").sum().show())
