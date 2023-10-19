@@ -63,5 +63,5 @@ print(df_pyspark.printSchema())
 
 
 #the groupby function 
-print("the group by function of the scheme")
-print(df_pyspark.groupBy("Age").sum().show())
+#print("the group by function of the scheme")
+#print(df_pyspark.groupBy("Age").sum().show())
