@@ -22,5 +22,11 @@ print(df_pyspark.describe())
 
 print(df_pyspark.describe().show())
 
-print(df_pyspark.head(2))
+print(df_pyspark.head())
+
+
+#multiple data frame can be selected
+print(df_pyspark.select("Name"))
+
+
 
