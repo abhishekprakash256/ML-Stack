@@ -41,6 +41,13 @@ print(imputer.fit(df_pyspark).transform(df_pyspark).show())
 
 transformed_df = imputer.fit(df_pyspark).transform(df_pyspark)
 
+
+#print("---------The original data that is given--------")
 print(df_pyspark.show())
 
+#print("---------The transformed data--------")
 print(transformed_df.show())
+
+
+#makng the fitering for the dataset 
+
