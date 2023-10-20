@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 #data file path
 FILE_PATH = "./datasets/tips.csv"
-EPOCHS = 200
+EPOCHS = 50
 
 class Data:
 
@@ -87,8 +87,8 @@ def train_test():
 
 	#the loop for trainer
 	for epoch in range(EPOCHS):
+		
 		optimizer.zero_grad()
-
 		train_predictions = model(data.X_train).flatten()
 		loss = loss_fn(train_predictions, data.y_train)
 
@@ -98,7 +98,7 @@ def train_test():
 		test_predictions = model(data.X_test).flatten()
 		test_loss = loss_fn(test_predictions, data.y_test)
 
-		if epoch % 10 == 0:
+		if epoch % 1 == 0:
 			print(f"Epoch {epoch}: Training Loss: {loss.item():.4f}, Test Loss: {test_loss.item():.4f}")
 
 	return model.state_dict()
