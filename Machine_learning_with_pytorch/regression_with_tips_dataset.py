@@ -4,7 +4,7 @@ linear regression with tips dataset
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
-
+from sklearn.metrics import mean_squared_error
 
 
 
@@ -64,11 +64,15 @@ def train_test():
     data.split_data()
 
     model.fit(data.X_train,data.y_train)
-
     y_pred = model.predict(data.X_test)
 
-    print(y_pred)
-    print(data.y_test)
+    mse = mean_squared_error(data.y_test, y_pred, squared= False)
+    print(mse)
+
+    #score = model.score(data.y_test, y_pred)
+    #print(score)
+
+
 
 
 
