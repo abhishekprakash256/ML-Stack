@@ -69,8 +69,11 @@ def train_test():
     mse = mean_squared_error(data.y_test, y_pred, squared= False)
     print(mse)
 
-    #score = model.score(data.y_test, y_pred)
-    #print(score)
+    print(y_pred.shape)
+
+    print(data.y_test.shape)
+
+    #print(model.score(y_pred,data.y_test))
 
 
 
