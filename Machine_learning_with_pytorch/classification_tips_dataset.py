@@ -31,6 +31,7 @@ class Data:
         """
         self.df = pd.read_csv(FILE_PATH)
         self.df = pd.get_dummies(self.df, columns=['day'])
+        self.df = self.df.astype(float)
         self.df = self.df.rename(columns = {'day_Friday': 'Friday', 'day_Tuesday': 'Tuesday'})
         
         col = ["week","n_peop","bill","Friday","Tuesday"]
@@ -43,10 +44,14 @@ class Data:
         split the data in test and train
         """
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y, test_size=0.33, random_state=42)
-        self.X_train = th.tensor(self.X_train.values)
+        
+        
+        self.X_train = th.tensor(self.X_train.values, dtype= th.float32)
         self.X_test = th.tensor(self.X_test.values)
         self.y_train = th.tensor(self.y_train.values)
         self.y_test = th.tensor(self.y_test.values)
+
+        
 
 
 class Liner_Model(nn.Module):
@@ -68,17 +73,15 @@ def train_test():
     The fumctipm fdpr yje    
     """ 
 
+
+    #data handling 
     model = Liner_Model()
     data = Data()
     data.make_data()
     data.split_data()
 
-    #make the pred
-
-    print(data.X_train[0].dtype)
-
-    #y_pred = model(data.X_train[0])
-
+    #train the model
+    
 
 
 
