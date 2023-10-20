@@ -61,10 +61,11 @@ class Liner_Model(nn.Module):
 
 	def __init__(self):
 		super(Liner_Model, self).__init__()
-		self.linear = nn.Linear(5, 1)  #input dims =  5 , out put = 1
+		self.linear1 = nn.Linear(5, 1)  #input dims =  5 , out put = 1
 
 	def forward(self, x):
-		x = self.linear(x)
+		x = self.linear1(x)
+
 		return x
 
 
