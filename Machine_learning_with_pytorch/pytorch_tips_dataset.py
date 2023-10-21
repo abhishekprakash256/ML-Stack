@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 
 #data file path
 FILE_PATH = "./datasets/tips.csv"
-EPOCHS = 50
+EPOCHS = 90
 
 class Data:
 
@@ -61,12 +61,13 @@ class Liner_Model(nn.Module):
 
 	def __init__(self):
 		super(Liner_Model, self).__init__()
-		self.linear1 = nn.Linear(5, 1)  #input dims =  5 , out put = 1
+		self.linear1 = nn.Linear(5, 1)  #input dims =  5 , output dims= 1
 
 	def forward(self, x):
 		x = self.linear1(x)
 
 		return x
+
 
 
 def train_test():
@@ -76,6 +77,7 @@ def train_test():
 
 	#data handling 
 	model = Liner_Model()
+
 	data = Data()
 	data.make_data()
 	data.split_data()
@@ -99,7 +101,7 @@ def train_test():
 		test_predictions = model(data.X_test).flatten()
 		test_loss = loss_fn(test_predictions, data.y_test)
 
-		if epoch % 1 == 0:
+		if epoch % 10 == 0:
 			print(f"Epoch {epoch}: Training Loss: {loss.item():.4f}, Test Loss: {test_loss.item():.4f}")
 
 	test_pred = model(data.X_train[0])
