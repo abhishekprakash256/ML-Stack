@@ -102,9 +102,15 @@ def train_test():
 		if epoch % 1 == 0:
 			print(f"Epoch {epoch}: Training Loss: {loss.item():.4f}, Test Loss: {test_loss.item():.4f}")
 
+	test_pred = model(data.X_train[0])
+
+	print(data.X_train[0])
+	print(test_pred)
+
 	return model.state_dict()
 
 
 
 if __name__ == "__main__":
 	train_test()
+

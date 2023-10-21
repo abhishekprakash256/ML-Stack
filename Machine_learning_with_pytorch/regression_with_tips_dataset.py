@@ -2,6 +2,7 @@
 linear regression with tips dataset
 """
 import pandas as pd
+import torch as th
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
@@ -43,44 +44,37 @@ class Data:
 		split the data in test and train
 		"""
 		self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y, test_size=0.33, random_state=42)
-		
-		
-		#self.X_train = th.tensor(self.X_train.values,dtype= th.float32)
-		#self.X_test = th.tensor(self.X_test.values, dtype= th.float32)
-		#self.y_train = th.tensor(self.y_train.values,  dtype= th.float32)
-		#self.y_test = th.tensor(self.y_test.values,  dtype= th.float32)
+
+		self.X_train = th.tensor(self.X_train.values,dtype= th.float32)
+		self.X_test = th.tensor(self.X_test.values, dtype= th.float32)
+		self.y_train = th.tensor(self.y_train.values,  dtype= th.float32)
+		self.y_test = th.tensor(self.y_test.values,  dtype= th.float32)
+
 
 
 
 def train_test():
-    """
-    The fumction for test and train    
-    """ 
+	"""
+	The fumction for test and train    
+	""" 
 
-    #data handling 
-    model = LinearRegression()
-    data = Data()
-    data.make_data()
-    data.split_data()
+	#data handling 
+	model = LinearRegression()
+	data = Data()
+	data.make_data()
+	data.split_data()
 
-    model.fit(data.X_train,data.y_train)
-    y_pred = model.predict(data.X_test)
+	model.fit(data.X_train,data.y_train)
+	y_pred = model.predict(data.X_test)
 
-    mse = mean_squared_error(data.y_test, y_pred, squared= False)
-    print(mse)
+	mse = mean_squared_error(data.y_test, y_pred, squared= False)
+	print(mse)
 
-    print(y_pred.shape)
+	print(data.X_train[0].reshape(1,5))
 
-    print(data.y_test.shape)
-
-    #print(model.score(y_pred,data.y_test))
-
-
-
-
-
-
-
+	test_pred = model.predict(data.X_train[0].reshape(1,5))
+	
+	print(test_pred)
 
 
 if __name__ == "__main__":
