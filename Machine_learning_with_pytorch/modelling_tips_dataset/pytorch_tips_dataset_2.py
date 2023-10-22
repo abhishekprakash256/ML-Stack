@@ -116,9 +116,12 @@ class Data_Prepration_Labellig:
 
 #make the regression model
 
-#
 
-def train_test_onehot():
+
+
+
+
+def sklearn_train_test_onehot():
 	"""
 	The fumction for test and train    
 	""" 
@@ -136,7 +139,7 @@ def train_test_onehot():
 	print(mse)
 
 
-def train_test_labelling():
+def sklearn_train_test_labelling():
 	"""
 	The fumction for test and train    
 	""" 
@@ -158,10 +161,11 @@ def train_test_labelling():
 
 
 
+
 if __name__ == "__main__":
 
-    train_test_onehot()
-    train_test_labelling()
+    sklearn_train_test_onehot()
+    sklearn_train_test_labelling()
 
 
 
