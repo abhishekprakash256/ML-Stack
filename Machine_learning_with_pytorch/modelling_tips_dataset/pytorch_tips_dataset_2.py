@@ -14,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 
 #data file path
 FILE_PATH = "../datasets/tips_full.csv"
-EPOCHS = 100
+EPOCHS = 1000
 
 
 
@@ -147,7 +147,7 @@ def pytorch_train_test_onehot():
     loss_fn = nn.L1Loss()
 
     # Define the optimizer	
-    optimizer = th.optim.SGD(params=model.parameters(), lr=0.001, momentum = 0.01)
+    optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
 
     #the loop for trainer
     for epoch in range(EPOCHS):
@@ -206,8 +206,6 @@ def sklearn_train_test_labelling():
 
 	mse = mean_squared_error(data_labelling.y_test, y_pred, squared= False)
 	print(mse)
-
-
 
 
 
