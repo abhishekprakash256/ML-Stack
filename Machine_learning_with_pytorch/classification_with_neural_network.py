@@ -105,19 +105,8 @@ def train_and_test():
 		model.train()
 		y_pred = model(data.X_train)
 
-		#print(y_pred)
-
-		#print("-------------y_pred______done")
-
-		#print(y_pred.shape)
-		#print(data.y_train.shape)
-
 
 		loss = loss_fn(y_pred, data.y_train.reshape(800,1))
-
-		#print(loss)
-
-		#print("_________loss_______done")
 
 		optimizer.zero_grad()
 		loss.backward()
