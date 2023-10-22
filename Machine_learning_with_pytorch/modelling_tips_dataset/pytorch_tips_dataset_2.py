@@ -255,5 +255,5 @@ if __name__ == "__main__":
     print("one hot encoding training")
     pytorch_train_test_onehot()
 
-    print("one hot lablling training")
+    print("labelling encoding training")
     pytorch_train_test_labelling()
