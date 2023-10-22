@@ -59,9 +59,6 @@ class Data_Prepration_OneHot:
         self.y_train = th.tensor(self.y_train.values,  dtype= th.float32)
         self.y_test = th.tensor(self.y_test.values,  dtype= th.float32)
 
-        #print(self.y_test[0])
-
-
 
 
 class Data_Prepration_Labellig:
@@ -137,9 +134,9 @@ def pytorch_train_test_onehot():
     train and test for pytorch one hot encoding 
     """
 
-    model = Liner_Model(in_features=13)
+    model = Liner_Model(in_features=7)
 
-    data = Data_Prepration_OneHot()
+    data = Data_Prepration_Labellig()
     data.make_data()
     data.split_data()
 
@@ -147,7 +144,7 @@ def pytorch_train_test_onehot():
     loss_fn = nn.L1Loss()
 
     # Define the optimizer	
-    optimizer = th.optim.SGD(params=model.parameters(), lr=0.001)
+    optimizer = th.optim.SGD(params=model.parameters(), lr=0.001, momentum=0.1)
 
     #the loop for trainer
     for epoch in range(EPOCHS):
@@ -170,6 +167,46 @@ def pytorch_train_test_onehot():
     print(data.X_train[0])
     print(test_pred)
 
+
+
+
+def pytorch_train_test_labelling():
+    """
+    train and test for pytorch one hot encoding 
+    """
+
+    model = Liner_Model(in_features=13)
+
+    data = Data_Prepration_OneHot()
+    data.make_data()
+    data.split_data()
+
+    #loss function 
+    loss_fn = nn.L1Loss()
+
+    # Define the optimizer	
+    optimizer = th.optim.SGD(params=model.parameters(), lr=0.001, momentum=0.1)
+
+    #the loop for trainer
+    for epoch in range(EPOCHS):
+        
+        optimizer.zero_grad()
+        train_predictions = model(data.X_train).flatten()
+        loss = loss_fn(train_predictions, data.y_train)
+
+        loss.backward()
+        optimizer.step()
+
+        test_predictions = model(data.X_test).flatten()
+        test_loss = loss_fn(test_predictions, data.y_test)
+
+        if epoch % 10 == 0:
+            print(f"Epoch {epoch}: Training Loss: {loss.item():.4f}, Test Loss: {test_loss.item():.4f}")
+
+    test_pred = model(data.X_train[0])
+
+    print(data.X_train[0])
+    print(test_pred)
 
 
 def sklearn_train_test_onehot():
@@ -214,4 +251,9 @@ if __name__ == "__main__":
 
     sklearn_train_test_onehot()
     sklearn_train_test_labelling()
+
+    print("one hot encoding training")
     pytorch_train_test_onehot()
+
+    print("one hot lablling training")
+    pytorch_train_test_labelling()
