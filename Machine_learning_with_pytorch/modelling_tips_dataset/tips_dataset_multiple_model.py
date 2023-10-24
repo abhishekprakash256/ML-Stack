@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import LabelEncoder
-from matplotlib.
+
 
 
 
@@ -131,6 +131,7 @@ def plot_data():
     """
     The function to plot the dataset 
     """
+    pass
 
 
 
