@@ -127,11 +127,6 @@ data_labelling.make_data()
 data_labelling.split_data()
 
 
-def plot_data():
-    """
-    The function to plot the dataset 
-    """
-    pass
 
 
 

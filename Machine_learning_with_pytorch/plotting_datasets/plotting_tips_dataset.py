@@ -23,10 +23,12 @@ print(df.info())
 
 
 # Create a visualization
-sns.relplot(
+sns.lmplot(
     data=df,
     x="total_bill", y="tip", col="time",
-    hue="smoker", style="smoker", size="size",
+    hue="smoker"
 )
 
 plt.show()
+
+
