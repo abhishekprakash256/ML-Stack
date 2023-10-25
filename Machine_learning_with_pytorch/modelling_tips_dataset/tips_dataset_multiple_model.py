@@ -7,10 +7,12 @@ import pandas as pd
 import torch as th
 from torch import nn
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import LabelEncoder
 
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 
 
 
@@ -128,12 +130,6 @@ data_labelling.split_data()
 
 
 
-
-
-
-
-
-
-
 #make different model for trainig on the data 
+
 
