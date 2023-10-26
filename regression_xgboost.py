@@ -8,7 +8,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 from xgboost import XGBRFRegressor
 from sklearn.metrics import mean_squared_error
-from sklearn.tree import DecisionTreeRegressor  
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.svm import SVR
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
 from helper.helper_function import Data_Prepration_OneHot,Data_Prepration_Labellig
 
 
@@ -30,6 +33,13 @@ XG_boost = XGBRFRegressor(n_estimators=100, subsample=0.9, colsample_bynode=0.2)
 
 #make the Decission tree
 Decision_tree_regressor = DecisionTreeRegressor()
+
+#make the svm regressor
+sv_regressor = SVR()
+
+#make the gaussian regressor
+kernel = DotProduct() + WhiteKernel()
+gpr = GaussianProcessRegressor(kernel=kernel,random_state=0)
 
 
 data_onehot = Data_Prepration_OneHot()
@@ -55,7 +65,8 @@ def train_test_one_hot():
     random_forest.fit(data_onehot.X_train,data_onehot.y_train)
     XG_boost.fit(data_onehot.X_train,data_onehot.y_train)
     Decision_tree_regressor.fit(data_onehot.X_train,data_onehot.y_train)
-
+    sv_regressor.fit(data_onehot.X_train,data_onehot.y_train)
+    gpr.fit(data_onehot.X_train,data_onehot.y_train)
  
     #calulate loss 
     y_pred_regression = linear_regression.predict(data_onehot.X_test)
@@ -79,11 +90,20 @@ def train_test_one_hot():
     print(mse_dst)
  
 
+    #calulate loss 
+    y_pred_svr = sv_regressor.predict(data_onehot.X_test)
+    mse_svr = mean_squared_error(data_onehot.y_test, y_pred_svr, squared= False)
+    print(mse_svr)
+
+    #calulate loss 
+    y_pred_gpr = gpr.predict(data_onehot.X_test)
+    mse_gpr = mean_squared_error(data_onehot.y_test, y_pred_gpr, squared= False)
+    print(mse_gpr)
 
 
 def train_test_labelling():
     """
-    train and test the one hot encoding model
+    train and test the one labele encoding
     """
 
     #fitting the model 
@@ -92,8 +112,9 @@ def train_test_labelling():
     random_forest.fit(data_labelling.X_train,data_labelling.y_train)
     XG_boost.fit(data_labelling.X_train,data_labelling.y_train)
     Decision_tree_regressor.fit(data_labelling.X_train,data_labelling.y_train)
+    sv_regressor.fit(data_labelling.X_train,data_labelling.y_train)
+    gpr.fit(data_labelling.X_train,data_labelling.y_train)
 
- 
     #calulate loss 
     y_pred_regression = linear_regression.predict(data_labelling.X_test)
     mse_regression = mean_squared_error(data_labelling.y_test, y_pred_regression, squared= False)
@@ -103,7 +124,6 @@ def train_test_labelling():
     y_pred_forest = random_forest.predict(data_labelling.X_test)
     mse_forest = mean_squared_error(data_labelling.y_test, y_pred_forest, squared= False)
     print(mse_forest)
-
 
     #calulate loss 
     y_pred_xgboost = XG_boost.predict(data_labelling.X_test)
@@ -115,11 +135,21 @@ def train_test_labelling():
     mse_dst = mean_squared_error(data_labelling.y_test, y_pred_decision_tree, squared= False)
     print(mse_dst)
 
+    #calulate loss 
+    y_pred_svr = sv_regressor.predict(data_labelling.X_test)
+    mse_svr = mean_squared_error(data_labelling.y_test, y_pred_svr, squared= False)
+    print(mse_svr)
 
+    #calulate loss 
+    y_pred_gpr = gpr.predict(data_labelling.X_test)
+    mse_gpr = mean_squared_error(data_labelling.y_test, y_pred_gpr, squared= False)
+    print(mse_gpr)
 
 
 
 
 if __name__ == "__main__":
+    print("-------- one hot --------")
     train_test_one_hot()
+    print("-------- labelling dataset --------")
     train_test_labelling()
