@@ -71,34 +71,42 @@ def train_test_one_hot():
     #calulate loss 
     y_pred_regression = linear_regression.predict(data_onehot.X_test)
     mse_regression = mean_squared_error(data_onehot.y_test, y_pred_regression, squared= False)
-    print(mse_regression)
+    print("linear regressor mse: ", mse_regression)
+    print("linear regressor score: ",linear_regression.score(data_onehot.X_test,data_onehot.y_test))
 
     #calulate loss 
     y_pred_forest = random_forest.predict(data_onehot.X_test)
     mse_forest = mean_squared_error(data_onehot.y_test, y_pred_forest, squared= False)
-    print(mse_forest)
+    print("linear random forest mse: ", mse_forest)
+    print("linear random forest score: ",random_forest.score(data_onehot.X_test,data_onehot.y_test))
 
 
     #calulate loss 
     y_pred_xgboost = XG_boost.predict(data_onehot.X_test)
     mse_xgboost = mean_squared_error(data_onehot.y_test, y_pred_xgboost, squared= False)
-    print(mse_xgboost)
+    print("linear xg boost mse: ", mse_xgboost)
+    print("linear xg boost score: ",XG_boost.score(data_onehot.X_test,data_onehot.y_test))
 
     #calulate loss 
     y_pred_decision_tree = Decision_tree_regressor.predict(data_onehot.X_test)
     mse_dst = mean_squared_error(data_onehot.y_test, y_pred_decision_tree, squared= False)
-    print(mse_dst)
+    print("linear decision tree mse: ", mse_dst)
+    print("linear decision tree score: ",Decision_tree_regressor.score(data_onehot.X_test,data_onehot.y_test))
  
 
     #calulate loss 
     y_pred_svr = sv_regressor.predict(data_onehot.X_test)
     mse_svr = mean_squared_error(data_onehot.y_test, y_pred_svr, squared= False)
-    print(mse_svr)
+    print("linear svr mse: ", mse_svr)
+    print("linear svr score: ",sv_regressor.score(data_onehot.X_test,data_onehot.y_test))
 
     #calulate loss 
     y_pred_gpr = gpr.predict(data_onehot.X_test)
     mse_gpr = mean_squared_error(data_onehot.y_test, y_pred_gpr, squared= False)
-    print(mse_gpr)
+    print("linear gpr  mse: ", mse_gpr)
+    print("linear gpr score: ",gpr.score(data_onehot.X_test,data_onehot.y_test))
+
+
 
 
 def train_test_labelling():
@@ -118,32 +126,38 @@ def train_test_labelling():
     #calulate loss 
     y_pred_regression = linear_regression.predict(data_labelling.X_test)
     mse_regression = mean_squared_error(data_labelling.y_test, y_pred_regression, squared= False)
-    print(mse_regression)
+    print("linear regressor mse: ", mse_regression)
+    print("linear regressor score: ",linear_regression.score(data_labelling.X_test,data_labelling.y_test))
 
     #calulate loss 
     y_pred_forest = random_forest.predict(data_labelling.X_test)
     mse_forest = mean_squared_error(data_labelling.y_test, y_pred_forest, squared= False)
-    print(mse_forest)
+    print("linear forest mse: ", mse_forest)
+    print("linear forest score: ",random_forest.score(data_labelling.X_test,data_labelling.y_test))
 
     #calulate loss 
     y_pred_xgboost = XG_boost.predict(data_labelling.X_test)
     mse_xgboost = mean_squared_error(data_labelling.y_test, y_pred_xgboost, squared= False)
-    print(mse_xgboost)
+    print("linear xgboost mse: ", mse_xgboost)
+    print("linear xgboost score: ",XG_boost.score(data_labelling.X_test,data_labelling.y_test))
 
     #calulate loss 
     y_pred_decision_tree = Decision_tree_regressor.predict(data_labelling.X_test)
     mse_dst = mean_squared_error(data_labelling.y_test, y_pred_decision_tree, squared= False)
-    print(mse_dst)
+    print("linear dst mse: ", mse_dst)
+    print("linear dst score: ",Decision_tree_regressor.score(data_labelling.X_test,data_labelling.y_test))
 
     #calulate loss 
     y_pred_svr = sv_regressor.predict(data_labelling.X_test)
     mse_svr = mean_squared_error(data_labelling.y_test, y_pred_svr, squared= False)
-    print(mse_svr)
+    print("linear svr mse: ", mse_svr)
+    print("linear svr score: ",sv_regressor.score(data_labelling.X_test,data_labelling.y_test))
 
     #calulate loss 
     y_pred_gpr = gpr.predict(data_labelling.X_test)
     mse_gpr = mean_squared_error(data_labelling.y_test, y_pred_gpr, squared= False)
-    print(mse_gpr)
+    print("linear gpr mse: ", mse_gpr)
+    print("linear gpr score: ",gpr.score(data_labelling.X_test,data_labelling.y_test))
 
 
 
