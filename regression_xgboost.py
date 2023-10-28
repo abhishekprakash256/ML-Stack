@@ -162,8 +162,6 @@ def train_test_labelling():
 
 
 
-
-
 if __name__ == "__main__":
     print("-------- one hot --------")
     train_test_one_hot()
