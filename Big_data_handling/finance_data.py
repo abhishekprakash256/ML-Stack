@@ -5,7 +5,7 @@ handling the finance data
 import pandas as pd
 
 #file path 
-FILE_PATH = "/home/abhi/Datasets/ihateabhi.csv"
+FILE_PATH = "/home/abhi/Datasets/finanacial_data2.csv"
 
 
 class Data():
@@ -30,20 +30,42 @@ class Data():
         """
         function to processing of the data as requiured
         """
-        #print(self.df.info())
+        #Apply the first condition , keep the row have Bank and CU
+        self.df = pd.read_csv(FILE_PATH, encoding='ISO-8859-1')
 
-        bank_name = (self.df["BankName"].unique())
+        filter_bank_CU = self.df["BankName"].str.contains("CU")
+        filter_bank_BANK = self.df["BankName"].str.contains("Bank")
 
-        #print(type(bank_name[0]))
 
-        #filer = self.df[self.df["BankName"].str.contains("BANK")]
+        filtered_bank = self.df[filter_bank_CU | filter_bank_BANK]
+
+        #bank filtering done
+        self.df = filtered_bank
+
+        #Apply the second condition , keep only 60
+        term_filter = self.df[(self.df["TermInMonths"] >=60) & (self.df["TermInMonths"] <= 120)]
+
+        #print(self.df[term_filter]["TermInMonths"].head(10))
+
+        self.df = term_filter
+
+        #print(self.df["Gauranteed %"])
+
+        filter_gurantee = self.df[(self.df["Gauranteed %"] >= 0.75) & (self.df["Gauranteed %"] <= 0.90)]
+        
+        self.df = filter_gurantee
+
+        #make the last filter 
+        print(self.df[""])
+
+        
 
         
 
 
 """
 1. heading with Bankname (doesn't contain CU or FCU or BANK) - remove
-2. heading terminmonths just keep 60 months
+2. heading TermInMonths just keep 60 months
 3  heding DeliveryMethod erase rhe rown with SBA_EXPRES
 4. heading Guranteed% - value only between 75 to 95% inclusive
 

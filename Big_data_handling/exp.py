@@ -36,24 +36,43 @@ class Data():
         """
         get the data and split in the data in X and y 
         """
+
+        #Apply the first condition , keep the row have Bank and CU
         self.df = pd.read_csv(FILE_PATH, encoding='ISO-8859-1')
 
-        #print(self.df["BankName"].head(20))
-
-        #print(self.df["BankName"].unique())
-
-        print(self.df["BankName"].info())
-
         filter_bank_CU = self.df["BankName"].str.contains("CU")
-        filter_bank_FCU = self.df["BankName"].str.contains("FCU")
-        filter_bank_BANK = self.df["BankName"].str.contains("BANK")
+        filter_bank_BANK = self.df["BankName"].str.contains("Bank")
 
 
-        filtered_bank = self.df[filter_bank_CU | filter_bank_FCU | filter_bank_BANK]
+        filtered_bank = self.df[filter_bank_CU | filter_bank_BANK]
 
-        print(filtered_bank)
+        #bank filtering done
+        self.df = filtered_bank
+
+        #Apply the second condition , keep only 60
+        term_filter = self.df[(self.df["TermInMonths"] >=60) & (self.df["TermInMonths"] <= 120)]
+
+        #print(self.df[term_filter]["TermInMonths"].head(10))
+
+        #apply the term filter done
+        self.df = term_filter
+        
+        #apply the delivery filter
+
+        #delivery_filter = self.df["DeliveryMethod"].str.contains("SBA EXPRES")
+
+        #drop the row with filter
+        
+
+        #apply the gurantee filter
+        print(self.df.info())
+        print(self.df["Gauranteed %"])
+
+        #filter_gurantee_75 = self.df["Gauranteed %"].str.contains("75%")
 
         
+        
+
 
         
 
