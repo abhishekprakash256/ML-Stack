@@ -41,6 +41,97 @@ that were not immediately apparent. This is called data mining.
   or instead detect patterns in the training data and build a predictive model, much
   like scientists do (instance-based versus model-based learning)
 
+### The 4 major type of learning 
+
+There are four major categories: supervised learning, unsupervised learning, semisupervised learning, and Reinforcement Learning.
+
+### Common supervised learning Algo
+
+- k-Nearest Neighbors
+-  Linear Regression
+-  Logistic Regression
+-  Support Vector Machines (SVMs)
+-  Decision Trees and Random Forests
+-  Neural networks2
+
+### Common Unsupervised Algo 
+
+• Clustering
+— k-Means
+— Hierarchical Cluster Analysis (HCA)
+— Expectation Maximization
+• Visualization and dimensionality reduction
+— Principal Component Analysis (PCA)
+— Kernel PCA
+— Locally-Linear Embedding (LLE)
+— t-distributed Stochastic Neighbor Embedding (t-SNE)
+• Association rule learning
+— Apriori
+— Eclat
+
+### Dimension reuduction
+
+A related task is dimensionality reduction, in which the goal is to simplify the data
+without losing too much information. One way to do this is to merge several correla‐
+ted features into one. For example, a car’s mileage may be very correlated with its age,
+so the dimensionality reduction algorithm will merge them into one feature that rep‐
+resents the car’s wear and tear. This is called feature extraction.
+
+### Semi supervised learning 
+
+Some algorithms can deal with partially labeled training data, usually a lot of unla‐
+beled data and a little bit of labeled data. This is called semisupervised learning
+
+### Reinforcememt learning 
+
+Reinforcement Learning is a very different beast. The learning system, called an agent
+in this context, can observe the environment, select and perform actions, and get
+rewards in return (or penalties in the form of negative rewards, as in Figure 1-12). It
+must then learn by itself what is the best strategy, called a policy, to get the most
+reward over time. A policy defines what action the agent should choose when it is in a
+given situation.
+
+### Challanges in Machine learning
+
+#### Bad data Problems
+
+- Insufficient Quantity of Training Data
+- Nonrepresentative Training Data
+- Irrelevant Features
+  - A critical part of the success of a Machine Learning project is coming up with a
+    good set of features to train on. This process, called feature engineering, involves:
+  - Feature selection: selecting the most useful features to train on among existing
+    features.
+  - Feature extraction: combining existing features to produce a more useful one (as
+    we saw earlier, dimensionality reduction algorithms can help).
+  - Creating new features by gathering new data.
+
+#### Bad Algo Problems
+
+- Overfitting the Training Data
+  - Constraining a model to make it simpler and reduce the risk of overfitting is called
+    regularization.
+- Underfitting the Training Data
+  -  Selecting a more powerful model, with more parameters
+  -  Feeding better features to the learning algorithm (feature engineering)
+  - Reducing the constraints on the model (e.g., reducing the regularization hyper‐
+    parameter)
+
+To avoid “wasting” too much training data in validation sets, a common technique is
+to use cross-validation: the training set is split into complementary subsets, and each
+model is trained against a different combination of these subsets and validated
+against the remaining parts. Once the model type and hyperparameters have been
+selected, a final model is trained using these hyperparameters on the full training set,
+and the generalized error is measured on the test set.
+
+
+
+
+
+
+
+
+
 
 
 
