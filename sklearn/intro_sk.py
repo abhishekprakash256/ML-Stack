@@ -34,4 +34,3 @@ mod = GridSearchCV(estimator = pipe,param_grid = {'model__n_neighbors':[1,2,3,4,
 mod.fit(X,y)
 
 print(pd.DataFrame(mod.cv_results_))
-
