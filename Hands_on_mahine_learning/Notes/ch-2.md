@@ -29,16 +29,17 @@ test set is representative of the overall population
 - One hot encoder and LabelBinarizer
 - Feature scaling 
     - min-max
-scaling and standardization.
+    scaling and standardization.
     - Normilization fix into the range of 0 to 1 (min max) 
     -  standartazition - Standardization is quite different: first it subtracts the mean value (so standardized
-values always have a zero mean), and then it divides by the variance so that the result‐
-ing distribution has unit variance. Unlike min-max scaling, standardization does not
-bound values to a specific range, which may be a problem for some algorithms (e.g.,
-neural networks often expect an input value ranging from 0 to 1).
+    values always have a zero mean), and then it divides by the variance so that the result‐
+    ing distribution has unit variance. Unlike min-max scaling, standardization does not
+    bound values to a specific range, which may be a problem for some algorithms (e.g.,
+    neural networks often expect an input value ranging from 0 to 1).
     - Sklearn provides pipeline featues 
 
 ### The model tuining 
 The sklearn porvides grid searching to fine tune the model faster 
+
 
 

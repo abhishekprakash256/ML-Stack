@@ -2,7 +2,7 @@
 handling the credit card dataset 
 """
 
-import pandas as pd 
+import pandas as pd
 import torch as th
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
