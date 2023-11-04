@@ -29,9 +29,20 @@ class Data():
         """
         The function to make thge data set
         """
-
         self.df = pd.read_csv(FILE_PATH)
 
+        self.X = self.df["median_house_value"]
+
+        self.y = self.df.drop(["median_house_value"],axis = 1)
+
+        #split the dataset 
+
+    
+    def split_data(self):
+        """
+        split the dataset in values
+        """
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y, test_size=0.33, random_state=42)
 
 
 
@@ -39,3 +50,4 @@ class Data():
 if __name__ == "__main__":
     data = Data()
     data.make_data()
+    data.split_data()
