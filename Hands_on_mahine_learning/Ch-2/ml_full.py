@@ -31,11 +31,9 @@ class Data():
         """
         self.df = pd.read_csv(FILE_PATH)
 
-        self.X = self.df["median_house_value"]
+        self.X = self.df.drop(["median_house_value"],axis = 1)
 
-        self.y = self.df.drop(["median_house_value"],axis = 1)
-
-        #split the dataset 
+        self.y = self.df["median_house_value"]
 
     
     def split_data(self):
@@ -44,6 +42,7 @@ class Data():
         """
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y, test_size=0.33, random_state=42)
 
+        #print(self.X_test.head())
 
 
 
@@ -51,3 +50,5 @@ if __name__ == "__main__":
     data = Data()
     data.make_data()
     data.split_data()
+    print(data.X)
+    print(data.y)
