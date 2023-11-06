@@ -4,6 +4,7 @@ Using the california housing prices dataset
 #imports 
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 
 
@@ -33,6 +34,8 @@ class Data():
 
         self.X = self.df.drop(["median_house_value"],axis = 1)
 
+        self.X = pd.get_dummies(self.X, columns=["ocean_proximity"])
+
         self.y = self.df["median_house_value"]
 
     
@@ -46,13 +49,14 @@ class Data():
         """
         Find the data correlations in the dataset
         """
-        corr = self.df.corr()
+        #corr = self.df.corr()
+        pass
 
 
 if __name__ == "__main__":
     data = Data()
     data.make_data()
     data.split_data()
-    data.data_metrics()
-    print(data.X_train)
-    print(data.y_train)
+    #data.data_metrics()
+    print(data.X_train.head())
+    #print(data.y_train)
