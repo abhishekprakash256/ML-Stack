@@ -41,13 +41,18 @@ class Data():
         split the dataset in values
         """
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X,self.y, test_size=0.33, random_state=42)
-        
 
+    def data_metrics(self):
+        """
+        Find the data correlations in the dataset
+        """
+        corr = self.df.corr()
 
 
 if __name__ == "__main__":
     data = Data()
     data.make_data()
     data.split_data()
+    data.data_metrics()
     print(data.X_train)
     print(data.y_train)
