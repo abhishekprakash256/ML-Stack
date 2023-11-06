@@ -12,7 +12,8 @@ from sklearn.model_selection import train_test_split
 
 
 #FILE PATH
-FILE_PATH = "/home/abhi/Datasets/housing.csv"
+FILE_PATH_1 = "/home/abhi/Datasets/housing.csv"
+FILE_PATH_2 = "/home/ubuntu/s3/housing.csv"  #for the ec2 machine 
 
 
 class Data():
@@ -26,7 +27,7 @@ class Data():
         self.y_test = None
     
 
-    def make_data(self):
+    def make_data(self,FILE_PATH):
         """
         The function to make thge data set
         """
@@ -34,7 +35,8 @@ class Data():
 
         self.X = self.df.drop(["median_house_value"],axis = 1)
 
-        self.X = pd.get_dummies(self.X, columns=["ocean_proximity"])
+        self.X = pd.get_dummies(self.X, columns=["ocean_proximity"], dtype= int)
+
 
         self.y = self.df["median_house_value"]
 
@@ -49,14 +51,16 @@ class Data():
         """
         Find the data correlations in the dataset
         """
-        #corr = self.df.corr()
-        pass
+        corr = self.X.corr()
+
+        print(corr)
+        
 
 
 if __name__ == "__main__":
     data = Data()
-    data.make_data()
+    data.make_data(FILE_PATH_2)
     data.split_data()
-    #data.data_metrics()
-    print(data.X_train.head())
+    data.data_metrics()
+    #print(data)
     #print(data.y_train)

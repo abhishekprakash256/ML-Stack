@@ -36,10 +36,47 @@ test set is representative of the overall population
     ing distribution has unit variance. Unlike min-max scaling, standardization does not
     bound values to a specific range, which may be a problem for some algorithms (e.g.,
     neural networks often expect an input value ranging from 0 to 1).
-    - Sklearn provides pipeline featues 
+    - Sklearn provides pipeline featues
 
 ### The model tuining 
 The sklearn porvides grid searching to fine tune the model faster 
+
+### Scattering tool to find the correlations in matrix
+- We can use a correlation matrix to summarize a large data set and to identify patterns and make a decision according to it. We can also see which variable is more correlated to which variable, and we can visualize our results.
+- pandas scattering tool can be used to find the realtions in the features 
+
+
+### Data prepration 
+- This will allow you to reproduce these transformations easily on any dataset (e.g.,
+the next time you get a fresh dataset).
+- You will gradually build a library of transformation functions that you can reuse
+in future projects.
+- You can use these functions in your live system to transform the new data before
+feeding it to your algorithms.
+
+
+#### Data cleaning steps 
+- Get rid of the corresponding districts.
+- Get rid of the whole attribute.
+- Set the values to some value (zero, the mean, the median, etc.)
+- You can accomplish these easily using DataFrame’s dropna(), drop(), and fillna()
+methods:
+
+#### Imputation 
+- fill the value with median , mode , fixed.
+
+#### Encoding
+- Labelencoder 
+- onehot encoding
+```
+from sklearn.preprocessing import OneHotEncoder
+encoder = OneHotEncoder()
+housing_cat_1hot = encoder.fit_transform(housing_cat_encoded.reshape(-1,1))
+```
+### Custom transformers can be written on sklearn as well 
+- using transformers 
+- 
+
 
 
 
