@@ -59,7 +59,7 @@ class Data():
 
 if __name__ == "__main__":
     data = Data()
-    data.make_data(FILE_PATH_2)
+    data.make_data(FILE_PATH_1)
     data.split_data()
     data.data_metrics()
     #print(data)
