@@ -11,6 +11,7 @@ from sklearn.model_selection import train_test_split
 
 
 
+
 #FILE PATH
 FILE_PATH_1 = "/home/abhi/Datasets/housing.csv"
 FILE_PATH_2 = "/home/ubuntu/s3/housing.csv"  #for the ec2 machine 
@@ -59,7 +60,7 @@ class Data():
 
 if __name__ == "__main__":
     data = Data()
-    data.make_data(FILE_PATH_1)
+    data.make_data(FILE_PATH_2)
     data.split_data()
     data.data_metrics()
     #print(data)
