@@ -21,7 +21,19 @@ print(df.loc[df["BorrState"] == "CA"])
 
 print(df.loc[(df["BorrState"]== "CA") & (df["TermInMonths"] <= 120)])
 
-
+#find the value of the state isin BorrowState 
 new_frame = (df.loc[df["BorrState"].isin(['CA','IL','CO','OH','WA'])])
 
 print(new_frame["BorrState"].unique())
+
+#the first row 
+print(df.loc[0])
+
+#print the row with values and filter with columns
+
+val = ["BorrState","TermInMonths"]
+indics = [0,1,10,100]
+
+print(df.loc[indics,val])
+
+

@@ -20,7 +20,7 @@ and the right number of instances is sampled from each stratum to guarantee that
 test set is representative of the overall population
 
 
-- Try the different metrics of the machine learning data to feed before into the model as playaround with different combo
+- Try the different metrics of the machine learning data to feed before into the model as playground with different combo
 
 
 ### Data processsing 
@@ -75,8 +75,8 @@ housing_cat_1hot = encoder.fit_transform(housing_cat_encoded.reshape(-1,1))
 ```
 ### Custom transformers can be written on sklearn as well 
 - using transformers 
+### Feature scaling 
 - 
-
 
 
 
