@@ -9,9 +9,6 @@ from sklearn.model_selection import train_test_split
 
 
 
-
-
-
 #FILE PATH
 FILE_PATH_1 = "/home/abhi/Datasets/housing.csv"
 FILE_PATH_2 = "/home/ubuntu/s3/housing.csv"  #for the ec2 machine 
