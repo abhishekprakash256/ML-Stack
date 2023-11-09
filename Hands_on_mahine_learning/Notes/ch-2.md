@@ -76,7 +76,7 @@ housing_cat_1hot = encoder.fit_transform(housing_cat_encoded.reshape(-1,1))
 ### Custom transformers can be written on sklearn as well 
 - using transformers 
 ### Feature scaling 
-- 
+- The value are scaled to fit in certain value, standardization and min max scaling. The feature scaling can be done to capture the outcast in the data. 
 
 
 
