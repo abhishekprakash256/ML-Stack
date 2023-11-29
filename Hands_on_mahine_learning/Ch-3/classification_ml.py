@@ -12,3 +12,5 @@ X, y = digits.data, digits.target
 
 print(X.shape)
 
+
+sns.lmplot(data=X[0])
