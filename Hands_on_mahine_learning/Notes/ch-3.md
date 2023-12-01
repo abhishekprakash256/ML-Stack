@@ -37,7 +37,7 @@ classifier outputs the highest score. This is called the one-versus-all (OvA) st
 Another strategy is to train a binary classifier for every pair of digits: one to distinguish 0s and 1s, another to distinguish 0s and 2s, another for 1s and 2s, and so on.
 This is called the one-versus-one (OvO) strategy. If there are N classes, you need to
 train N × (N – 1) / 2 classifiers. For the MNIST problem, this means training 45
-binary classifiers! When you want to classify an image, you have to run the image
+binary classifiers! When you want to classify an image, you have to ru	n the image
 through all 45 classifiers and see which class wins the most duels. The main advantage of OvO is that each classifier only needs to be trained on the part of the training
 set for the two classes that it must distinguish.
 
