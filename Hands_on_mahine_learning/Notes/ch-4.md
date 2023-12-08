@@ -32,5 +32,7 @@ weights θ1 to θn.
 
 
 
+![mse equation](normal.png)
+
 
 
