@@ -62,3 +62,14 @@ An important theoretical result of statistics and Machine Learning is the fact t
 
 **Increasing a model’s complexity will typically increase its variance and reduce its bias. Conversely, reducing a model’s complexity increases its bias and reduces its variance. This is why it is called a tradeoff.**
 
+**As we saw in Chapters 1 and 2, a good way to reduce overfitting is to regularize the model (i.e., to constrain it): the fewer degrees of freedom it has, the harder it will be for it to overfit the data. For example, a simple way to regularize a polynomial model is to reduce the number of polynomial degrees.**
+
+**For a linear model, regularization is typically achieved by constraining the weights of the model. We will now look at Ridge Regression, Lasso Regression, and Elastic Net, which implement three different ways to constrain the weights.**
+
+***Ridge Regression* (also called *Tikhonov regularization*) is a regularized version of Lin‐ ear Regression: a *regularization term* equal to *α*∑*n* *θ*2 is added to the cost function.**
+
+***i*=1 *i**
+**\* This forces the learning algorithm to not only fit the data but also keep the model**
+
+**weights as small as possible. Note that the regularization term should only be added to the cost function during training. Once the model is trained, you want to evaluate the model’s performance using the unregularized performance measure.**
+
