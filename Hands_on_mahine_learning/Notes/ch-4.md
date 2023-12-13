@@ -54,7 +54,7 @@ An important theoretical result of statistics and Machine Learning is the fact t
 
 **10 This notion of bias is not to be confused with the bias term of linear models.**
 
-**This part of the generalization error is due to wrong assumptions, such as assum‐ ing that the data is linear when it is actually quadratic. A high-bias model is most likely to underfit the training data.10**
+**This part of the generalization error is due to wrong assumptions, such as assuming that the data is linear when it is actually quadratic. A high-bias model is most likely to underfit the training data.10**
 
 ***Irreducible error***
 
@@ -72,4 +72,20 @@ An important theoretical result of statistics and Machine Learning is the fact t
 **\* This forces the learning algorithm to not only fit the data but also keep the model**
 
 **weights as small as possible. Note that the regularization term should only be added to the cost function during training. Once the model is trained, you want to evaluate the model’s performance using the unregularized performance measure.**
+
+**Therefore randomness is good to escape from local optima, but bad because it means that the algorithm can never settle at the minimum. One solution to this dilemma is o gradually reduce the learning rate. The steps start out large (which helps make  quick progress and escape local minima), then get smaller and smaller, allowing the algorithm to settle at the global minimum. This process is called simulated annealing,**
+
+
+
+**Mini-batch Gradient Descent**
+The last Gradient Descent algorithm we will look at is called Mini-batch Gradient Descent. It is quite simple to understand once you know Batch and Stochastic Gradient Descent: at each step, instead of computing the gradients based on the full training set (as in Batch GD) or based on just one instance (as in Stochastic GD), Minibatch GD computes the gradients on small random sets of instances called minibatches. The main advantage of Mini-batch GD over Stochastic GD is that you can get a performance boost from hardware optimization of matrix operations, especially when using GPUs.
+
+**Polynomial Regression**
+What if your data is actually more complex than a simple straight line? Surprisingly, you can actually use a linear model to fit nonlinear data. A simple way to do this is to add powers of each feature as new features, then train a linear model on this extended set of features. This technique is called Polynomial Regression.
+
+
+
+
+
+
 
