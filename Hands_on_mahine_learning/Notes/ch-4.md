@@ -86,7 +86,7 @@ What if your data is actually more complex than a simple straight line? Surprisi
 An important theoretical result of statistics and Machine Learning is the fact that a model’s generalization error can be expressed as the sum of three very different errors:
 Bias
 This part of the generalization error is due to wrong assumptions, such as assuming that the data is linear when it is actually quadratic. A high-bias model is most
-likely to underfit the training data.10
+likely to under-fit the training data 10
 Variance
 This part is due to the model’s excessive sensitivity to small variations in the training data. A model with many degrees of freedom (such as a high-degree polynomial model) is likely to have high variance, and thus to overfit the training data.
 
@@ -106,6 +106,10 @@ dimensions, if you can imagine a universe with more than three dimensions).
 **Stochastic Gradient Descent**
 The main problem with Batch Gradient Descent is the fact that it uses the whole training set to compute the gradients at every step, which makes it very slow when the training set is large. At the opposite extreme, Stochastic Gradient Descent just picks a random instance in the training set at every step and computes the gradients based only on that single instance. Obviously this makes the algorithm much faster since it has very little data to manipulate at every iteration. It also makes it possible to rain on huge training sets, since only one instance needs to be in memory at each
 iteration (SGD can be implemented as an out-of-core algorithm.7)
+
+
+
+
 
 
 
