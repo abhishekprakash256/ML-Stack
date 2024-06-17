@@ -30,6 +30,17 @@ for the LLM and ML tasks
 
 
 
-links 
+links --
 
+
+https://huggingface.co/collections/open-llm-leaderboard/llm-leaderboard-best-models-652d6c7965a4619fb5c27a03
 https://www.salesforce.com/blog/small-language-models/
+
+
+
+small models list -- 
+
+distilBert 
+gpt-neo 
+Tiny-bert 
+mobile-bert 
