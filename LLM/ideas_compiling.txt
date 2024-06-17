@@ -15,8 +15,21 @@ The scrambing ideas for the the machine learning addition to the website as the 
 
 
 
+reqs --
+
+-- pip install transformers
+
 for the LLM and ML tasks 
 
 -- the hugging face models can be a starting point to deep dive 
 -- LLM caching for faster responses 
+-- using langchain to build the models 
+-- using the SLM 
 -- 
+
+
+
+
+links 
+
+https://www.salesforce.com/blog/small-language-models/
